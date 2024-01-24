@@ -1,39 +1,37 @@
-﻿using GuyObject;
+﻿using Wager;
 
 
 Random random = new Random(); // new instance of the Random class
 
 double odds = .75; //the odds to beat
 
-Wager player = new Wager() { Cash = 100, Name = "The player" }; // a Wager variable called The player
+Wager.Wager player = new Wager.Wager() { Cash = 100, Name = "The player" }; // a Wager variable called The player
 
 Console.WriteLine($"Welcome to the casino. The odds are {odds}"); // Write a line to the console welcoming the player and printing the odds.
 
-//while (true) // changed this to read player.Cash
 while (player.Cash > 0)
 {
     player.WriteMyInfo(); // print the amount of cash the player has.
 
-    Console.Write("How much do you want to bet: "); //Ask the user how much money to bet.
+    Console.Write("How much do you want to bet: "); // Ask the player place their bet.
 
     string howMuch = Console.ReadLine(); // Read the line into a string variable called howMuch.
 
-    if (howMuch == "") return;
+    if (howMuch == "") return; // if the input is empty return
 
-    if (int.TryParse(howMuch, out int amount)) ; // Try to parse it into an int variable called amount.
+    if (int.TryParse(howMuch, out int amount)) ; // Try to parse it into an int variable called amount.  
 
-    int pot = amount * 2;// int variable called pot. It gets multiplied by two
-    double randomOdds = random.NextDouble();// 6. The program picks a random number between 0 and 1.
-
-    if (randomOdds > odds) // 7. If the number is greater than odds, the player receives the pot.
+    int pot = amount * 2; // int variable called pot. It gets multiplied by two
+    double randomOdds = random.NextDouble(); // The program picks a random number between 0 and 1.
+    
+    if (randomOdds > odds) // If the number is greater than odds, the player receives the pot.
     {
         Console.WriteLine($"You won {pot} bucks!");
-        player.Cash += pot;
+       player.ReceiveCash(pot); // player won double their bet
     }
     else
     {
-        Console.WriteLine($"Bad Luck You loose"); // If not, the player loses the amount they bet.
-        player.Cash -= amount;
+        player.GiveCash(amount); // player lost bet
     }
 
     if (player.Cash <= 0)
