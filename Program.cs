@@ -1,6 +1,5 @@
 ﻿using Wager;
 
-
 Random random = new Random(); // new instance of the Random class
 
 double odds = .75; //the odds to beat
@@ -17,8 +16,6 @@ while (player.Cash > 0)
 
     string howMuch = Console.ReadLine(); // Read the line into a string variable called howMuch.
 
-    if (howMuch == "") return; // if the input is empty return
-
     if (int.TryParse(howMuch, out int amount)); // Try to parse it into an int variable called amount.  
 
     int pot = amount * 2; // int variable called pot. It gets multiplied by two
@@ -27,7 +24,7 @@ while (player.Cash > 0)
     if (randomOdds > odds) // If the number is greater than odds, the player receives the pot.
     {
         Console.WriteLine($"You won {pot} bucks!");
-       player.ReceiveCash(pot); // player won double their bet
+        player.ReceiveCash(pot); // player won double their bet
     }
     else
     {
