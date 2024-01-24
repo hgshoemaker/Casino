@@ -19,7 +19,7 @@ while (player.Cash > 0)
 
     if (howMuch == "") return; // if the input is empty return
 
-    if (int.TryParse(howMuch, out int amount)) ; // Try to parse it into an int variable called amount.  
+    if (int.TryParse(howMuch, out int amount)); // Try to parse it into an int variable called amount.  
 
     int pot = amount * 2; // int variable called pot. It gets multiplied by two
     double randomOdds = random.NextDouble(); // The program picks a random number between 0 and 1.
